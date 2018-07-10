@@ -1,37 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      liked: true
+    }
+    this.handClick = this.handClick.bind(this)
   }
-  handleSubmit(event) {
-    event.preventDefault();
-    alert(
-      `Selected file - ${
-        this.fileInput.files[0].name
-      }`
-    );
+  handClick(e){
+    this.setState({
+      liked: !this.state.liked
+    })
   }
   render() {
+    var txt = this.state.liked ? '喜欢' : '不喜欢';
     return (
-      <form
-        onSubmit={this.handleSubmit}>
-        <label>
-          Upload file:
-          <input type='file' ref={input => {
-            this.fileInput = input;
-          }} 
-          />
-        </label>
-        <br/>
-        <button type="submit">
-            Submit
-        </button>
-      </form>
-    );
+      <div>
+        <p>{txt}</p>
+          <button onClick={this.handClick}>点我</button>
+      </div>
+    )
   }
 }
 

@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 class Clock extends Component {
     constructor(props) {
         super(props);
-        this.state = {date: new Date()};
-    }
-
+    };   
+    handleChange(event){
+        this.setState({value: event.target.value});
+    };
     render() {
+        var value = this.state.value;
         return (
             <div>
-                <h1>Hello wangjie!</h1>
-                <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+                <input type="text" value={value} onChange={this.handleChange} />
             </div>
         )
     }
